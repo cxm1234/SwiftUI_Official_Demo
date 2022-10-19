@@ -14,6 +14,9 @@ struct FeatureCard: View {
         landmark.featureImage?
             .resizable()
             .aspectRatio(3 / 2, contentMode: .fit)
+            .overlay {
+                TextOverlay(landmark: landmark)
+            }
     }
 }
 
@@ -31,8 +34,15 @@ struct TextOverlay: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             gradient
-            VSta
+            VStack(alignment: .leading) {
+                Text(landmark.name)
+                    .font(.title)
+                    .bold()
+                Text(landmark.park)
+            }
+            .padding()
         }
+        .foregroundColor(.white)
     }
 }
 
